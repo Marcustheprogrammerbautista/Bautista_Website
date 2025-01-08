@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <header>
+        <h1>DON ERIK'S BILLIARDS ACCESSORIES</h1>
+        <nav>
+            <a href="index.html">HOME</a> |
+            <a href="Product Gallery.html">PRODUCTS</a> |
+            <a href="#contact">ORDER CONTACT</a>
+        </nav>
+    </header>
+    <section class="product-container">
+        <div class="product-box">
+            <img src="product 1.jpg" alt="Aramith Black Edition">
+            <h3>Aramith Black Edition</h3>
+        </div>
+        <div class="product-box">
+            <img src="product 2.jpg" alt="Predator Billiard gloves">
+            <h3>Predator Billiard gloves</h3>
+        </div>
+        <div class="product-box">
+            <img src="product 3.jpg" alt="Taom Billiard chalk">
+            <h3>Taom Billiard chalk</h3>
+        </div>
+        <div class="product-box">
+            <img src="product 4.jpg" alt="Product 4">
+            <h3>CUETEC SVB GHOST EDITION</h3>
+        </div>
+    </section>
+    <p>Elevate your game with our premium selection of billiard accessories designed for players of all levels. From high-quality cues and durable cue cases to precision chalk, stylish gloves, and replacement tips, we have everything you need to enhance your performance and style at the table. Whether you're a casual player or a seasoned pro, our products combine functionality and durability to help you play your best. Explore our collection and gear up for the perfect shot every time!</p>
+    <div class="bot">
+        <div class="chatbot">
+          <div class="chat-header" onclick="toggleChatBody()">Chat with us!</div>
+          <div class="chat-body" id="chatBody">
+              <div id="chatMessages"></div>
+              <div class="chat-footer">
+                  <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleEnterKey(event)">
+                  <button onclick="sendMessage()">Send</button>
+              </div>
+          </div>
+      </div>
+      </div>
+    
+      <script>
+        const chatBody = document.getElementById('chatBody');
+      
+      function toggleChatBody() {
+        console.log("Header clicked!");
+        chatBody.style.display = chatBody.style.display === 'block' ? 'none' : 'block';
+      }
+      
+      
+            function handleEnterKey(event) {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            }
+      
+            const chatMessages = document.getElementById('chatMessages');
+      
+            function appendMessage(content, className) {
+                const messageDiv = document.createElement('div');
+                messageDiv.textContent = content;
+                messageDiv.className = `message ${className}`;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+      
+            function sendMessage() {
+                const userInput = document.getElementById('userInput');
+                const userMessage = userInput.value.trim();
+      
+                if (userMessage) {
+                    appendMessage(userMessage, 'user-message');
+                    userInput.value = '';
+                    botReply(userMessage);
+                }
+            }
+      
+            function botReply(message) {
+                const lowerCaseMessage = message.toLowerCase();
+                let botMessage;
+      
+                if (lowerCaseMessage.includes('hello')) {
+                    botMessage = 'Hi there! How can I help you today?';
+                } else if (lowerCaseMessage.includes('how are you')) {
+                    botMessage = 'I am just a bot, but I am doing great! How about you?';
+                } else if (lowerCaseMessage.includes('bye')) {
+                    botMessage = 'Goodbye! Have a great day!';
+                  } else if (lowerCaseMessage.includes('who is the best teacher')) {
+                    botMessage = 'Mrs.Lucita Gamboa, of course!';
+                  } else if (lowerCaseMessage.includes('can you help me with finding a proper cue for me?')){
+                    botMessage = 'Yes, please contact us so we can evaulate your proper needs!';
+                  } else if (lowerCaseMessage.includes('how can i contact you?')) {
+                    botMessage = 'Just press from the upper right corner, ORDER CONTACT';
+                } else {
+                    botMessage = "I'm not sure how to respond to that. Can you rephrase?";
+      
+                appendMessage(botMessage, 'bot-message');
+            }
+        }
+      
+      </script>
+</body>
+</html>
