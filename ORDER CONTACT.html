@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="css.css">
+</head>
+<body>
+    <header>
+        <h1>DON ERIK'S BILLIARDS ACCESSORIES</h1>
+        <nav>
+            <a href="main.html">HOME</a>|
+            <a href="Product Gallery.html">PRODUCTS</a> |
+            <a href="ORDER CONTACT.html">ORDER CONTACT</a>
+        </nav>
+    </header>
+    
+    <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p><strong>Name:</strong> Don Erik Cunanan</p>
+        <p><strong>Phone:</strong>09994200069</p>
+        <p><strong>Email:</strong> donerikbilliardshop@gmail.com</p>
+        <p><strong>Address:</strong> #56 kalayaan street, Lumban, Laguna, Philippines</p>
+    </div>
+
+    <p>We’re delighted to be part of your billiards journey by offering top-notch accessories to enhance your game. From beginner essentials to professional-grade equipment, we take pride in providing quality products that meet the needs of players at every level. Whether you’re gearing up for a friendly match or a high-stakes tournament, our accessories are crafted to deliver performance, durability, and style.
+
+        We value your trust and are dedicated to making your shopping experience smooth and satisfying. However, please note that all purchases are final, and cancellations are not allowed once your order is confirmed. This policy helps us maintain efficiency and ensures that every item reaches our customers promptly and in perfect condition. We encourage you to review your order details carefully before completing your purchase to avoid any inconvenience.
+        
+        If you have any questions, need product recommendations, or require assistance, our friendly support team is always ready to help. Thank you for choosing us ur ultimate partner in elevating your billiards experience. We look forward to serving you again and being part of your continued success at the table!
+
+
+    <div class="bot">
+        <div class="chatbot">
+          <div class="chat-header" onclick="toggleChatBody()">Chat with us!</div>
+          <div class="chat-body" id="chatBody">
+              <div id="chatMessages"></div>
+              <div class="chat-footer">
+                  <input type="text" id="userInput" placeholder="Type a message..." onkeypress="handleEnterKey(event)">
+                  <button onclick="sendMessage()">Send</button>
+              </div>
+          </div>
+      </div>
+      </div>
+    
+      <script>
+        const chatBody = document.getElementById('chatBody');
+      
+      function toggleChatBody() {
+        console.log("Header clicked!");
+        chatBody.style.display = chatBody.style.display === 'block' ? 'none' : 'block';
+      }
+      
+      
+            function handleEnterKey(event) {
+                if (event.key === 'Enter') {
+                    sendMessage();
+                }
+            }
+      
+            const chatMessages = document.getElementById('chatMessages');
+      
+            function appendMessage(content, className) {
+                const messageDiv = document.createElement('div');
+                messageDiv.textContent = content;
+                messageDiv.className = `message ${className}`;
+                chatMessages.appendChild(messageDiv);
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+      
+            function sendMessage() {
+                const userInput = document.getElementById('userInput');
+                const userMessage = userInput.value.trim();
+      
+                if (userMessage) {
+                    appendMessage(userMessage, 'user-message');
+                    userInput.value = '';
+                    botReply(userMessage);
+                }
+            }
+      
+            function botReply(message) {
+                const lowerCaseMessage = message.toLowerCase();
+                let botMessage;
+      
+                if (lowerCaseMessage.includes('hello')) {
+                    botMessage = 'Hi there! How can I help you today?';
+                } else if (lowerCaseMessage.includes('how are you')) {
+                    botMessage = 'I am just a bot, but I am doing great! How about you?';
+                } else if (lowerCaseMessage.includes('bye')) {
+                    botMessage = 'Goodbye! Have a great day!';
+                  } else if (lowerCaseMessage.includes('who is the best teacher')) {
+                    botMessage = 'Mrs.Lucita Gamboa, of course!';
+                  } else if (lowerCaseMessage.includes('can you help me with finding a proper cue for me?')){
+                    botMessage = 'Yes, please contact us so we can evaulate your proper needs!';
+                  } else if (lowerCaseMessage.includes('how can i contact you?')) {
+                    botMessage = 'Just press from the upper right corner, ORDER CONTACT';
+                } else {
+                    botMessage = "I'm not sure how to respond to that. Can you rephrase?";
+      
+                appendMessage(botMessage, 'bot-message');
+            }
+            }    
+      </script>
+</body>
+</html>
